@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from '@/components/ui/sonner';
 import { MainLayout } from '@/components/layout/main-layout';
 import { LoginPage } from '@/pages/auth/login';
@@ -15,10 +15,11 @@ function App() {
         <Route path="/app" element={<MainLayout />}>
           {/* Add other routes here */}
         </Route>
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Toaster />
     </BrowserRouter>
   );
 }
 
-export default App
+export default App;
