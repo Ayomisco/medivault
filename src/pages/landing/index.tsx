@@ -3,8 +3,6 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Shield, Lock, Brain, FileText, Github, Twitter, Disc as Discord } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 
 // Lazy load the dialog component
 const Dialog = lazy(() => import('@/components/ui/dialog').then(mod => ({ default: mod.Dialog })));
@@ -212,7 +210,7 @@ export function LandingPage() {
           <div className="mt-12 pt-8 border-t border-white/10">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-sm text-muted-foreground">
-                © 2024 MediVault. All rights reserved.
+                2024 MediVault. All rights reserved.
               </p>
               <div className="flex gap-8 text-sm text-muted-foreground">
                 <a href="#" className="hover:text-foreground">Privacy Policy</a>

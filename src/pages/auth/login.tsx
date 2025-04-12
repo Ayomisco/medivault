@@ -31,10 +31,10 @@ export function LoginPage() {
     mode: 'onChange',
   });
 
-  const onSubmit = async (data: LoginFormData) => {
+  const onSubmit = async (formData: LoginFormData) => {
     setIsSubmitting(true);
     try {
-      // TODO: Implement your login logic here
+      console.log('Form submitted:', formData);
       await new Promise(resolve => setTimeout(resolve, 1500));
       navigate('/app');
     } catch (error) {

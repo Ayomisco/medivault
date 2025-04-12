@@ -15,17 +15,16 @@ const metadata = {
   icons: ['https://avatars.githubusercontent.com/u/37784886']
 };
 
-const config = createConfig({
-  chains: [mainnet],
-  projectId,
-  metadata,
-});
+const config = createConfig({});
 
 createWeb3Modal({ 
   wagmiConfig: config, 
   projectId, 
   chains: [mainnet],
-  themeMode: 'light'
+  themeMode: 'light',
+  themeVariables: {
+    '--w3m-accent': '#3b82f6'
+  }
 });
 
 createRoot(document.getElementById('root')!).render(
