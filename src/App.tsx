@@ -1,25 +1,19 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { Toaster } from '@/components/ui/sonner';
-import { MainLayout } from '@/components/layout/main-layout';
+import { Toaster } from 'sonner';
+import { LandingPage } from '@/pages/landing';
 import { LoginPage } from '@/pages/auth/login';
 import { SignupPage } from '@/pages/auth/signup';
-import { LandingPage } from '@/pages/landing';
 
-function App() {
+export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        <Route path="/app" element={<MainLayout />}>
-          {/* Add other routes here */}
-        </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Toaster />
     </BrowserRouter>
   );
 }
-
-export default App;

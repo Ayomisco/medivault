@@ -4,7 +4,7 @@ import { defineConfig } from 'vite';
 import { splitVendorChunkPlugin } from 'vite';
 
 export default defineConfig({
-  base: '/',
+  base: './',
   plugins: [
     react(),
     splitVendorChunkPlugin(),
@@ -17,6 +17,8 @@ export default defineConfig({
   build: {
     target: 'esnext',
     minify: 'terser',
+    outDir: 'dist',
+    assetsDir: 'assets',
     rollupOptions: {
       output: {
         manualChunks(id) {
