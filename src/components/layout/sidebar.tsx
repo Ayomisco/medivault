@@ -5,13 +5,8 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { SIDEBAR_ITEMS } from '@/lib/constants';
-import { LucideIcon } from 'lucide-react';
-
-interface SidebarItem {
-  href: string;
-  icon: LucideIcon;
-  title: string;
-}
+import type { SidebarItem } from '@/types';
+import * as React from 'react';
 
 export function Sidebar() {
   const [expanded, setExpanded] = useState(true);
@@ -66,7 +61,9 @@ export function Sidebar() {
             )}
           >
             <div className="relative">
-              {item.icon && <item.icon size={20} />}
+              <div className="h-5 w-5 transition-transform group-hover:scale-110">
+                {item.icon && React.createElement(item.icon)}
+              </div>
               <div className="absolute inset-0 bg-blue-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
             <AnimatePresence initial={false}>

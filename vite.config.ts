@@ -18,10 +18,18 @@ export default defineConfig({
     minify: 'terser',
     rollupOptions: {
       output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'ui-vendor': ['@radix-ui/react-*'],
-          'web3-vendor': ['wagmi', '@web3modal/wagmi', 'viem'],
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
+              return 'react-vendor';
+            }
+            if (id.includes('@radix-ui')) {
+              return 'ui-vendor';
+            }
+            if (id.includes('wagmi') || id.includes('@web3modal') || id.includes('viem')) {
+              return 'web3-vendor';
+            }
+          }
         }
       }
     }
