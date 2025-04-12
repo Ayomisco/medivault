@@ -7,6 +7,12 @@ import { Button } from '@/components/ui/button';
 import { SIDEBAR_ITEMS } from '@/lib/constants';
 import { LucideIcon } from 'lucide-react';
 
+interface SidebarItem {
+  href: string;
+  icon: LucideIcon;
+  title: string;
+}
+
 export function Sidebar() {
   const [expanded, setExpanded] = useState(true);
 
@@ -49,7 +55,7 @@ export function Sidebar() {
       </div>
 
       <nav className="flex-1 space-y-2 p-4">
-        {SIDEBAR_ITEMS.map((item: { href: string; icon: LucideIcon; title: string }) => (
+        {SIDEBAR_ITEMS.map((item: SidebarItem) => (
           <Link
             key={item.href}
             to={item.href}
@@ -60,7 +66,7 @@ export function Sidebar() {
             )}
           >
             <div className="relative">
-              {item.icon && <item.icon className="h-5 w-5 transition-transform group-hover:scale-110" />}
+              {item.icon && <item.icon size={20} />}
               <div className="absolute inset-0 bg-blue-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
             <AnimatePresence initial={false}>

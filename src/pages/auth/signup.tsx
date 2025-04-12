@@ -8,7 +8,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Shield, Mail, Lock, User, Wallet, Github } from 'lucide-react';
-import { Separator } from '@/components/ui/separator';
 
 const signupSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -37,10 +36,10 @@ export function SignupPage() {
     mode: 'onChange',
   });
 
-  const onSubmit = async (data: SignupFormData) => {
+  const onSubmit = async (formData: SignupFormData) => {
     setIsSubmitting(true);
     try {
-      // TODO: Implement your signup logic here
+      console.log('Form submitted:', formData);
       await new Promise(resolve => setTimeout(resolve, 1500));
       navigate('/login');
     } catch (error) {
