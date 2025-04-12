@@ -7,7 +7,8 @@ import { publicProvider } from 'wagmi/providers/public';
 import App from './App.tsx';
 import './index.css';
 
-const projectId = 'YOUR_WC_PROJECT_ID'; // Replace with your WalletConnect project ID
+// Use environment variable or fallback to a default (you should replace this with your actual project ID)
+const projectId = import.meta.env.VITE_WALLETCONNECT_PROJECT_ID || 'default-project-id';
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [mainnet],
@@ -20,15 +21,18 @@ const config = createConfig({
   webSocketPublicClient,
 });
 
-createWeb3Modal({ 
-  wagmiConfig: config, 
-  projectId, 
-  chains,
-  themeMode: 'light',
-  themeVariables: {
-    '--w3m-accent': '#3b82f6'
-  }
-});
+// Only create Web3Modal if we have a valid project ID
+if (projectId !== 'default-project-id') {
+  createWeb3Modal({ 
+    wagmiConfig: config, 
+    projectId, 
+    chains,
+    themeMode: 'light',
+    themeVariables: {
+      '--w3m-accent': '#3b82f6'
+    }
+  });
+}
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
