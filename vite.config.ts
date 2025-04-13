@@ -3,8 +3,9 @@ import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 import { splitVendorChunkPlugin } from 'vite';
 
+// https://vitejs.dev/config/
 export default defineConfig({
-  base: './',
+  base: '',
   plugins: [
     react(),
     splitVendorChunkPlugin(),
@@ -19,6 +20,7 @@ export default defineConfig({
     minify: 'terser',
     outDir: 'dist',
     assetsDir: 'assets',
+    sourcemap: true,
     rollupOptions: {
       output: {
         manualChunks(id) {
@@ -43,5 +45,7 @@ export default defineConfig({
   },
   server: {
     hmr: true,
+    port: 5173,
+    host: true
   }
 });
